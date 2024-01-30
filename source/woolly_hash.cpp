@@ -8,11 +8,6 @@
 void woolly_hash(const void* in, size_t in_len, void* out, size_t out_len) {
 
     /* setup */
-    enum direction {
-        forward  = 1,
-        backward = -1
-    };
-    
     auto calc_merge_step = [](uint16_t l, uint16_t r) {
         return (l + r) >> 1;
     };

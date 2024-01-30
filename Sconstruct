@@ -4,6 +4,6 @@ BIN_FOLDER = "bin/"
 SOURCE = Glob("source/*.c*")
 
 CC = "clang++"
-CCFLAGS = "-g".split(' ')
+CCFLAGS = "-g -Wall".split(' ')
 
 Program(BIN_FOLDER+BIN, SOURCE, CC=CC, CCFLAGS=CCFLAGS)

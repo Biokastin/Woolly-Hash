@@ -16,7 +16,7 @@ int main() {
 
     assert(sizeof(expected_result) == sizeof(result));
 
-    for (int i=0; i < sizeof(expected_result); i++) {
+    for (size_t i=0; i < sizeof(expected_result); i++) {
         assert(expected_result[i] == result[i]);
     }
 
