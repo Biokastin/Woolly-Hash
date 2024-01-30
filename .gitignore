@@ -1,0 +1,8 @@
+# folders
+bin/*
+doxy-documentation/
+.vscode/
+
+# files
+*.o
+.sconsign.dblite

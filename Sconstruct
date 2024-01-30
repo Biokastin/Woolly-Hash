@@ -1,0 +1,9 @@
+BIN = "program"
+BIN_FOLDER = "bin/"
+
+SOURCE = Glob("source/*.c*")
+
+CC = "clang++"
+CCFLAGS = "-g".split(' ')
+
+Program(BIN_FOLDER+BIN, SOURCE, CC=CC, CCFLAGS=CCFLAGS)
