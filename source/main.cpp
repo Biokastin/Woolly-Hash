@@ -7,8 +7,8 @@
 int main() {
 
     /* verification */
-    const uint8_t test_data[] = {10, 20, 2, 4, 1};
-    const uint8_t expected_result[] = {15, 2};
+    const uint8_t test_data[] = {0xAA, 0x55, 0xFF, 0x01, 0xAA};
+    const uint8_t expected_result[] = {0xFF, 0x04};
     
     uint8_t result[2] = {};
 

@@ -15,7 +15,7 @@
 #include <cstddef>
 
 /**
- * @brief calculates a novel fuzzy hash based on merging byte pair averages in a tree like pattern
+ * @brief calculates a novel fuzzy hash based on merging bit pair via XOR in a tree like pattern
  * 
  * @param in        pointer to data to hash
  * @param in_len    length of data at `in`

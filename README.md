@@ -1,6 +1,6 @@
 # Woolly Hash
 
-Calculates a novel fuzzy hash based on merging byte pair averages in a tree like pattern. No dependencies other than C++ standard library.
+Calculates a novel fuzzy hash based on merging bit pair via XOR in a tree like pattern. No dependencies other than C++20 standard library.
 
 ## test & benchmark compile instructions
 
@@ -17,8 +17,3 @@ Calculates a novel fuzzy hash based on merging byte pair averages in a tree like
 ## use in projects
 
 1. from the external directory of the repo's root folder `#include "Woolly Hash/woolly_hash.hpp"`
-
-## notes
-
-1. The program that compiles is bare bones. All it performs is a validation of the algorithm using asserts and allocates a gigabyte of memory and hashes it meant to be used as a benchmark.
-2. I advise against using this in production as this will likely have minimal if any updates, and hasn't gone through an efficiency evaluation. If I see this project getting note worthy attention or if I think of adding something I will continue updating.
