@@ -4,6 +4,16 @@ BIN_FOLDER = "bin/"
 SOURCE = Glob("source/*.c*")
 
 CC = "clang++"
-CCFLAGS = "-g -Wall -std=c++20".split(' ')
+CCFLAGS = "-Wall -Werror -std=c++20".split(' ')
+
+if "debug" in ARGUMENTS:
+    if ARGUMENTS["debug"] == "yes":
+        CCFLAGS.extend("-g -fanalyzer".split(' '))
+        BIN += "-debug"
+
+elif "release" in ARGUMENTS:
+    if ARGUMENTS["release"] == "yes":
+        CCFLAGS.extend("-O3".split(' '))
+        BIN += "-release"
 
 Program(BIN_FOLDER+BIN, SOURCE, CC=CC, CCFLAGS=CCFLAGS)
