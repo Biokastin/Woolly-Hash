@@ -3,9 +3,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstring>
-#include <cassert>
 #include <array>
-#include <functional>
 
 template<typename T, size_t N, typename F=std::identity>
 constexpr std::array<T, N> gen_lut(const F& f) {
@@ -33,7 +31,7 @@ std::array<uint8_t, 256> merge_lut = gen_lut<uint8_t, 256>(
     }
 );
 
-void woolly_hash(const void* in, size_t in_len, void* out, size_t out_len) {
+WoollyStatus woolly_hash(const void* in, size_t in_len, void* out, size_t out_len) {
 
     /* setup */
     uint8_t* buf = new uint8_t[in_len];
@@ -42,8 +40,8 @@ void woolly_hash(const void* in, size_t in_len, void* out, size_t out_len) {
 
     bool is_finished = false;
 
-    assert(in_len >= out_len);
-    assert(buf != nullptr);
+    if (in_len < out_len) { return WoollyStatus::ToSmallIn; };
+    if (buf == nullptr)   { return WoollyStatus::MemoryAllocError; };
 
     std::memcpy(buf, in, in_len);
 
@@ -78,5 +76,7 @@ void woolly_hash(const void* in, size_t in_len, void* out, size_t out_len) {
     std::memcpy(out, buf, out_len);
 
     delete [] buf;
+
+    return WoollyStatus::Success;
 
 }

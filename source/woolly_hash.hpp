@@ -14,6 +14,12 @@
 
 #include <cstddef>
 
+enum WoollyStatus {
+    Success,
+    ToSmallIn,
+    MemoryAllocError
+};
+
 /**
  * @brief calculates a novel fuzzy hash based on merging bit pair via XOR in a tree like pattern
  * 
@@ -25,6 +31,6 @@
  * @attention ensure memory allocated for `out` is more than or equal to `out_len`, and ensure `in_len` is more than or equal to `out_len`.
  * 
  */
-void woolly_hash(const void* in, size_t in_len, void* out, size_t out_len);
+WoollyStatus woolly_hash(const void* in, size_t in_len, void* out, size_t out_len);
 
 #endif /* WOOLLY_HASH_H */
