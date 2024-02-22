@@ -24,7 +24,7 @@ int main() {
         }
     }
 
-    // /* benchmark - 1GB in, 32 bytes out */
+    /* benchmark - 1GB in, 32 bytes out */
     {
         const int benchmark_len = 1024 * 1024 * 1024;
         const int out_len = 32;
