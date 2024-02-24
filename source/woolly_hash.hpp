@@ -14,10 +14,14 @@
 
 #include <cstddef>
 
+/**
+ * @brief Return status from woolly_hash.
+ * 
+ */
 enum WoollyStatus {
-    Success,
-    ToSmallIn,
-    MemoryAllocError
+    Success,            /* hash successfully calculated */
+    ToSmallIn,          /* in_len is smaller than out_len */
+    MemoryAllocError    /* unable to allocate enough memory to create calculation buffer */
 };
 
 /**
@@ -28,7 +32,7 @@ enum WoollyStatus {
  * @param out       pointer to hash output
  * @param out_len   length of desired output at `out`
  * 
- * @attention ensure memory allocated for `out` is more than or equal to `out_len`, and ensure `in_len` is more than or equal to `out_len`.
+ * @returns Returns WoollyStatus enum as seen in "source/woolly_hash.hpp"
  * 
  */
 WoollyStatus woolly_hash(const void* in, size_t in_len, void* out, size_t out_len);
