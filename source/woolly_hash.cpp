@@ -34,14 +34,19 @@ std::array<uint8_t, 256> merge_lut = gen_lut<uint8_t, 256>(
 WoollyStatus woolly_hash(const void* in, size_t in_len, void* out, size_t out_len) {
 
     /* setup */
+    if (in_len < out_len) {
+        return WoollyStatus::ToSmallIn;
+    };
+    
     uint8_t* buf = new uint8_t[in_len];
+
+    if (buf == nullptr) {
+        return WoollyStatus::MemoryAllocError;
+    };
 
     size_t buf_len = in_len;
 
     bool is_finished = false;
-
-    if (in_len < out_len) { return WoollyStatus::ToSmallIn; };
-    if (buf == nullptr)   { return WoollyStatus::MemoryAllocError; };
 
     std::memcpy(buf, in, in_len);
 
