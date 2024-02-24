@@ -1,11 +1,15 @@
 # Woolly Hash
 
-Calculates a novel fuzzy hash based on merging bit pair via XOR in a tree like pattern. No dependencies other than C++20 standard library.
+Calculates a novel fuzzy hash based on merging bit pair via XOR in a tree like pattern. No dependencies other than C++ standard library.
 
 ## test & benchmark compile instructions
 
 1. run: `$ scons` in repo's root
-2. compiled binary located in `bin` named `program`
+    - `debug=yes` - build with `-g` and run gcc's static analyzer
+    - `profile=yes` - build with `-pg` flag for added profiling abilties
+    - `release=yes` - build with `-O3` flag for optimized build benchmarking
+
+2. compiled binary located in `bin` named `program` appended with build option (eg. `program-debug`)
 
 ## generate doxygen documentation
 
