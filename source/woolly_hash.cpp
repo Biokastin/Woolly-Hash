@@ -5,31 +5,31 @@
 #include <cstring>
 #include <array>
 
-template<typename T, size_t N, typename F=std::identity>
-constexpr std::array<T, N> gen_lut(const F& f) {
+template<typename T, size_t N>
+constexpr std::array<T, N> gen_lut() {
 
     std::array<T, N> arr = {};
 
+    uint8_t tmp = 0;
+
     for (size_t i=0; i < N; i++) {
-        arr[i] = f(i);
+        
+        tmp = (i >> 1) ^ i;
+
+        arr[i] = (
+            (tmp & 0b00000001) |
+            ((tmp >> 1) & 0b00000010) |
+            ((tmp >> 2) & 0b00000100) |
+            ((tmp >> 3) & 0b00001000)
+        );
+    
     }
 
     return arr;
 
 }
 
-std::array<uint8_t, 256> merge_lut = gen_lut<uint8_t, 256>(
-    [](uint8_t x) {
-        uint8_t tmp = (x >> 1) ^ x;
-
-         return (
-            (tmp & 0b00000001) |
-            ((tmp >> 1) & 0b00000010) |
-            ((tmp >> 2) & 0b00000100) |
-            ((tmp >> 3) & 0b00001000)
-        );
-    }
-);
+std::array<uint8_t, 256> merge_lut = gen_lut<uint8_t, 256>();
 
 WoollyStatus woolly_hash(const void* in, size_t in_len, void* out, size_t out_len) {
 
