@@ -49,7 +49,7 @@ int main() {
     {
         const int out_len = 5;
 
-        uint8_t benchmark_in[] = "Hello world, and any who inhabit it!";
+        uint8_t benchmark_in[] = "Hello world, and all who inhabit it!";
         uint8_t out[out_len] = {};
 
         woolly_hash(benchmark_in, sizeof(benchmark_in), out, out_len);
